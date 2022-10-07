@@ -8,7 +8,7 @@ import kotlin.math.ceil
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,28 +18,31 @@ class MainActivity : AppCompatActivity() {
         binding.buttonCalcular.setOnClickListener { calculateTip() }
     }
 
-    fun calculateTip() {
-        val textoIntroducido = binding.editTextTextPersonName.text.toString()
-        val coste = textoIntroducido.toDouble()
-        val selectedRadio = binding.radioGroup.checkedRadioButtonId
+    private fun calculateTip() {
+        val textIntroduced = binding.editTextTextPersonName.text.toString()
+        val cost = textIntroduced.toDoubleOrNull()
+        if (cost == null) {
+            binding.tipAmount.text = ""
+            return
+        }
 
-        val porcentage = when (selectedRadio) {
+        val percentage = when (binding.radioGroup.checkedRadioButtonId) {
             R.id.radioButton20 -> 0.20
             R.id.radioButton18 -> 0.18
             else -> 0.15
 
         }
 
-        var tip = porcentage * coste
+        var tip = percentage * cost
 
-        val redondear = binding.switchRedondear.isChecked
+        val roundOut = binding.switchRedondear.isChecked
 
-        if (redondear) {
+        if (roundOut) {
             tip = ceil(tip)
         }
 
-        val formatedTip = NumberFormat.getCurrencyInstance().format(tip)
-        binding.tipAmount.text = getString(R.string.tip_amount, formatedTip)
+        val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
+        binding.tipAmount.text = getString(R.string.tip_amount, formattedTip)
 
 
     }

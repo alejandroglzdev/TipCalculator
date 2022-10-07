@@ -13,7 +13,7 @@
         android:ems="10"
         android:hint="@string/cost_of_service"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/tvHowWasTheService"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.173" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvHowWasTheService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -39,7 +39,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="13dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/tvHowWasTheService">
 
         <RadioButton
             android:id="@+id/radioButton20"
